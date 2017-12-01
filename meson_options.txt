@@ -1,0 +1,5 @@
+option('verbosity_level', type : 'combo',
+       choices: ['info', 'always', 'error', 'warn', 'debug', 'verbose'],
+       value : 'info',
+       description: 'PCL verbosity level')
+
