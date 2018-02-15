@@ -172,8 +172,6 @@ octree_src = [
 octree_deps = [ threads_dep, m_dep, common_dep ]
 octree_deps += eigen_dep
 
-octree_deps += boost_deps
-
 octree_lib = shared_library('pcl_octree', octree_src,
         version: version,
         cpp_args: octree_defines,
@@ -189,8 +187,6 @@ kdtree_src = [
     'kdtree/src/kdtree_flann.cpp'
 ]
 kdtree_deps = [ threads_dep, m_dep, flann_dep, eigen_dep, common_dep ]
-
-kdtree_deps += boost_deps
 
 kdtree_lib = shared_library('pcl_kdtree', kdtree_src,
         version: version,
@@ -211,8 +207,6 @@ search_src = [
     'search/src/octree.cpp',
 ]
 search_deps = [ threads_dep, m_dep, common_dep, kdtree_dep, octree_dep ]
-
-search_deps += boost_deps
 
 search_lib = shared_library('pcl_search', search_src,
         version: version,
@@ -242,8 +236,6 @@ sample_consensus_src = [
     'sample_consensus/src/sac_model_sphere.cpp',
 ]
 sample_consensus_deps = [ common_dep, search_dep ]
-
-sample_consensus_deps += boost_deps
 
 sample_consensus_lib = shared_library('pcl_sample_consensus', sample_consensus_src,
         version: version,
@@ -296,8 +288,6 @@ filters_deps = [
     search_dep,
     sample_consensus_dep,
 ]
-
-filters_deps += boost_deps
 
 filters_lib = shared_library('pcl_filters', filters_src,
         version: version,
@@ -358,8 +348,6 @@ features_deps = [
     filters_dep,
 ]
 
-features_deps += boost_deps
-
 features_lib = shared_library('pcl_features', features_src,
         version: version,
         cpp_args: features_defines,
@@ -387,8 +375,6 @@ ml_src = [
     'ml/src/kmeans.cpp',
 ]
 ml_deps = [ common_dep ]
-
-ml_deps += boost_deps
 
 ml_lib = shared_library('pcl_ml', ml_src,
         version: version,
@@ -434,8 +420,6 @@ segmentation_deps = [
     features_dep,
     ml_dep,
 ]
-
-segmentation_deps += boost_deps
 
 segmentation_lib = shared_library('pcl_segmentation', segmentation_src,
         version: version,
