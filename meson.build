@@ -155,7 +155,7 @@ common_deps += eigen_dep
 
 common_deps += boost_deps
 
-common_lib = shared_library('pcl_common', common_src,
+common_lib = library('pcl_common', common_src,
         version: version,
         cpp_args: common_defines,
         include_directories: common_inc,
@@ -172,7 +172,7 @@ octree_src = [
 octree_deps = [ threads_dep, m_dep, common_dep ]
 octree_deps += eigen_dep
 
-octree_lib = shared_library('pcl_octree', octree_src,
+octree_lib = library('pcl_octree', octree_src,
         version: version,
         cpp_args: octree_defines,
         include_directories: [common_inc, octree_inc],
@@ -188,7 +188,7 @@ kdtree_src = [
 ]
 kdtree_deps = [ threads_dep, m_dep, flann_dep, eigen_dep, common_dep ]
 
-kdtree_lib = shared_library('pcl_kdtree', kdtree_src,
+kdtree_lib = library('pcl_kdtree', kdtree_src,
         version: version,
         cpp_args: kdtree_defines,
         include_directories: [common_inc, kdtree_inc],
@@ -208,7 +208,7 @@ search_src = [
 ]
 search_deps = [ threads_dep, m_dep, common_dep, kdtree_dep, octree_dep ]
 
-search_lib = shared_library('pcl_search', search_src,
+search_lib = library('pcl_search', search_src,
         version: version,
         cpp_args: search_defines,
         include_directories: [common_inc, octree_inc, kdtree_inc, search_inc],
@@ -237,7 +237,7 @@ sample_consensus_src = [
 ]
 sample_consensus_deps = [ common_dep, search_dep ]
 
-sample_consensus_lib = shared_library('pcl_sample_consensus', sample_consensus_src,
+sample_consensus_lib = library('pcl_sample_consensus', sample_consensus_src,
         version: version,
         cpp_args: sample_consensus_defines,
         include_directories: [common_inc, octree_inc, kdtree_inc, sample_consensus_inc],
@@ -289,7 +289,7 @@ filters_deps = [
     sample_consensus_dep,
 ]
 
-filters_lib = shared_library('pcl_filters', filters_src,
+filters_lib = library('pcl_filters', filters_src,
         version: version,
         cpp_args: filters_defines,
         include_directories: [common_inc, octree_inc, kdtree_inc, filters_inc],
@@ -348,7 +348,7 @@ features_deps = [
     filters_dep,
 ]
 
-features_lib = shared_library('pcl_features', features_src,
+features_lib = library('pcl_features', features_src,
         version: version,
         cpp_args: features_defines,
         include_directories: [common_inc, octree_inc, kdtree_inc, features_inc],
@@ -376,7 +376,7 @@ ml_src = [
 ]
 ml_deps = [ common_dep ]
 
-ml_lib = shared_library('pcl_ml', ml_src,
+ml_lib = library('pcl_ml', ml_src,
         version: version,
         cpp_args: ml_defines,
         include_directories: [common_inc, octree_inc, kdtree_inc, ml_inc],
@@ -421,7 +421,7 @@ segmentation_deps = [
     ml_dep,
 ]
 
-segmentation_lib = shared_library('pcl_segmentation', segmentation_src,
+segmentation_lib = library('pcl_segmentation', segmentation_src,
         version: version,
         cpp_args: segmentation_defines,
         include_directories: [common_inc, octree_inc, kdtree_inc, segmentation_inc],
