@@ -76,7 +76,10 @@ namespace pcl
     {
       typedef typename boost::mpl::deref<Iterator>::type arg;
 
-#if (defined _WIN32 && defined _MSC_VER)
+      // Note: when compiling for Windows using Clang then _MSC_VER may
+      // still be defined for compatibility but Clang will give and error
+      // here without the template keyword...
+#if (defined _WIN32 && defined _MSC_VER && !defined __clang__)
       boost::mpl::aux::unwrap (f, 0).operator()<arg> ();
 #else
       boost::mpl::aux::unwrap (f, 0).template operator()<arg> ();
